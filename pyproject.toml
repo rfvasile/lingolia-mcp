@@ -1,0 +1,31 @@
+[project]
+name = "lingolia-mcp"
+version = "0.1.0"
+description = "MCP server: Lingolia's French grammar rules, with a link to the exact section."
+requires-python = ">=3.12"
+dependencies = [
+    "fastmcp>=4.1.6",
+]
+
+[project.scripts]
+lingolia-mcp = "lingolia_mcp.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "pytest-asyncio>=1.4.1.post1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+extraPaths = ["src"]
