@@ -4,8 +4,10 @@ An MCP server for the French grammar and usage rules on [Lingolia](https://franc
 
 | Tool | Returns |
 |---|---|
-| `list_topics()` | Every topic title, about 130. Call it once, then query with a title's words |
+| `find_rule()` | Every topic title, about 130. Call it once, then query with a title's words |
 | `find_rule("pronoms adverbiaux y")` | The best sections, each with an excerpt, a link to that exact section and the topic's free exercise |
+
+One tool, not two: an MCP client reads every tool's description on each turn.
 
 It was built for the end-of-session bilan in [quest-voice-bridge](../quest-voice-bridge), but any MCP client can use it.
 
@@ -46,7 +48,7 @@ The content belongs to Lingolia. The index stays local and is never committed, a
 | `crawl.py` | Sitemap → rule pages, fetched politely |
 | `page.py` | One page → title, sections, links, free exercise |
 | `index.py` | SQLite full-text search, accents ignored, light stemming |
-| `server.py` | `list_topics` and `find_rule` |
+| `server.py` | `find_rule` |
 | `cli.py` | `serve`, `update`, `status`, `search` |
 
 `uv run pytest` runs the tests, on synthetic pages.
